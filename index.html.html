@@ -1,0 +1,805 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <title>Okum Udeh | System Administrator & IT Support</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <meta name="description" content="Portfolio of Okum Udeh – System Administrator, IT 
+Support and Logistics Specialist based in Berlin, Germany." /> 
+ 
+  <!-- Google Font --> 
+  <link rel="preconnect" href="https://fonts.googleapis.com" /> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
+  <link 
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&displa
+ y=swap" rel="stylesheet" /> 
+ 
+  <style> 
+    :root { 
+      --bg: #020617; 
+      --bg-alt: #020817; 
+      --card: #020617; 
+      --card-alt: #020617; 
+      --accent: #38bdf8; 
+      --accent-soft: rgba(56, 189, 248, 0.12); 
+      --text-main: #e5e7eb; 
+      --text-soft: #9ca3af; 
+      --border-subtle: rgba(148, 163, 184, 0.25); 
+      --chip-bg: rgba(15, 23, 42, 0.85); 
+      --shadow-soft: 0 18px 60px rgba(15, 23, 42, 0.75); 
+      --radius-lg: 22px; 
+      --radius-pill: 999px; 
+    } 
+ 
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+    } 
+ 
+    body { 
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", 
+sans-serif; 
+      background: radial-gradient(circle at top, #0f172a 0, #020617 52%, #000 100%); 
+      color: var(--text-main); 
+      min-height: 100vh; 
+      display: flex; 
+      justify-content: center; 
+      padding: 32px 16px; 
+    } 
+ 
+    .page { 
+      width: 100%; 
+      max-width: 1120px; 
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.06), transparent 55%), 
+                  radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.07), transparent 
+55%), 
+                  rgba(15, 23, 42, 0.96); 
+      border-radius: 30px; 
+      border: 1px solid rgba(148, 163, 184, 0.25); 
+      box-shadow: var(--shadow-soft); 
+      backdrop-filter: blur(24px); 
+      padding: 24px; 
+      display: grid; 
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.7fr); 
+      gap: 24px; 
+    } 
+ 
+    @media (max-width: 880px) { 
+      .page { 
+        grid-template-columns: 1fr; 
+        padding: 18px; 
+        border-radius: 24px; 
+      } 
+    } 
+ 
+    /* Left (main) column */ 
+    .main-column { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 22px; 
+    } 
+ 
+    .hero-card { 
+      border-radius: var(--radius-lg); 
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 65%), 
+                  radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.16), transparent 60%), 
+                  rgba(15, 23, 42, 0.96); 
+      border: 1px solid rgba(148, 163, 184, 0.2); 
+      padding: 22px 22px 20px; 
+      display: flex; 
+      gap: 18px; 
+      align-items: center; 
+      position: relative; 
+      overflow: hidden; 
+    } 
+ 
+    .hero-badge { 
+      position: absolute; 
+      top: 16px; 
+      right: 18px; 
+      font-size: 11px; 
+      text-transform: uppercase; 
+      letter-spacing: 0.12em; 
+      color: var(--text-soft); 
+      background: rgba(15, 23, 42, 0.9); 
+      border-radius: var(--radius-pill); 
+      padding: 6px 10px; 
+      border: 1px solid rgba(148, 163, 184, 0.4); 
+      display: flex; 
+      align-items: center; 
+      gap: 6px; 
+    } 
+ 
+    .hero-badge-dot { 
+      width: 7px; 
+      height: 7px; 
+      border-radius: 999px; 
+      background: #22c55e; 
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.16); 
+    } 
+ 
+    .avatar { 
+      width: 90px; 
+      height: 90px; 
+      border-radius: 24px; 
+      overflow: hidden; 
+      border: 2px solid rgba(148, 163, 184, 0.7); 
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.85); 
+      flex-shrink: 0; 
+    } 
+ 
+    .avatar img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      display: block; 
+    } 
+ 
+    .hero-text { 
+      flex: 1; 
+      min-width: 0; 
+    } 
+ 
+    .hero-name { 
+      font-size: 26px; 
+      font-weight: 600; 
+      letter-spacing: 0.02em; 
+      margin-bottom: 4px; 
+    } 
+ 
+    .hero-role { 
+      font-size: 14px; 
+      font-weight: 500; 
+      text-transform: uppercase; 
+      letter-spacing: 0.24em; 
+      color: var(--accent); 
+      margin-bottom: 10px; 
+    } 
+ 
+    .hero-summary { 
+      font-size: 13px; 
+      color: var(--text-soft); 
+      line-height: 1.6; 
+      max-width: 34rem; 
+    } 
+ 
+    .hero-actions { 
+      margin-top: 14px; 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 10px; 
+      font-size: 12px; 
+    } 
+ 
+    .btn-primary, 
+    .btn-ghost { 
+      border-radius: var(--radius-pill); 
+      padding: 7px 14px; 
+      border: 1px solid rgba(148, 163, 184, 0.6); 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px; 
+      text-decoration: none; 
+      cursor: pointer; 
+      font-size: 12px; 
+      font-weight: 500; 
+      transition: all 0.16s ease-out; 
+    } 
+ 
+    .btn-primary { 
+      background: linear-gradient(135deg, #38bdf8, #6366f1); 
+      border-color: transparent; 
+      color: #0b1120; 
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.55); 
+    } 
+ 
+    .btn-primary:hover { 
+      transform: translateY(-1px); 
+      box-shadow: 0 14px 40px rgba(37, 99, 235, 0.7); 
+    } 
+ 
+    .btn-ghost { 
+      background: rgba(15, 23, 42, 0.85); 
+      color: var(--text-soft); 
+    } 
+ 
+    .btn-ghost:hover { 
+      background: rgba(15, 23, 42, 0.98); 
+      color: var(--text-main); 
+    } 
+ 
+    .btn-icon { 
+      font-size: 14px; 
+    } 
+ 
+    /* Sections */ 
+    .section { 
+      border-radius: var(--radius-lg); 
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 
+0.98)); 
+      border: 1px solid var(--border-subtle); 
+      padding: 16px 18px 18px; 
+    } 
+ 
+    .section-header { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: baseline; 
+      margin-bottom: 10px; 
+    } 
+ 
+    .section-title { 
+      font-size: 13px; 
+      font-weight: 600; 
+      letter-spacing: 0.18em; 
+      text-transform: uppercase; 
+      color: var(--text-soft); 
+    } 
+ 
+    .section-tagline { 
+      font-size: 11px; 
+      color: var(--accent); 
+      text-transform: uppercase; 
+      letter-spacing: 0.13em; 
+    } 
+ 
+    /* Experience list */ 
+    .timeline { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 14px; 
+      margin-top: 4px; 
+    } 
+ 
+    .timeline-item { 
+      display: grid; 
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); 
+      gap: 12px; 
+      padding: 10px 10px 11px; 
+      border-radius: 16px; 
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.96)); 
+      border: 1px solid rgba(31, 41, 55, 0.9); 
+    } 
+ 
+    @media (max-width: 720px) { 
+      .timeline-item { 
+        grid-template-columns: 1fr; 
+      } 
+    } 
+ 
+    .timeline-main { 
+      min-width: 0; 
+    } 
+ 
+    .timeline-role { 
+      font-size: 14px; 
+      font-weight: 500; 
+      margin-bottom: 2px; 
+    } 
+ 
+    .timeline-company { 
+      font-size: 12px; 
+      color: var(--text-soft); 
+      margin-bottom: 4px; 
+    } 
+ 
+    .timeline-meta { 
+      font-size: 11px; 
+      color: var(--accent); 
+      margin-bottom: 6px; 
+    } 
+ 
+    .timeline-bullets { 
+      font-size: 12px; 
+      color: var(--text-soft); 
+      list-style: none; 
+    } 
+ 
+    .timeline-bullets li { 
+      margin-bottom: 4px; 
+      position: relative; 
+      padding-left: 12px; 
+    } 
+ 
+    .timeline-bullets li::before { 
+      content: "•"; 
+      position: absolute; 
+      left: 0; 
+      color: var(--accent); 
+      font-size: 13px; 
+    } 
+ 
+    .timeline-side { 
+      font-size: 11px; 
+      color: var(--text-soft); 
+      display: flex; 
+      flex-direction: column; 
+      gap: 4px; 
+      justify-content: space-between; 
+    } 
+ 
+    .pill { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: flex-start; 
+      gap: 6px; 
+      font-size: 11px; 
+      padding: 4px 9px; 
+      border-radius: var(--radius-pill); 
+      background: var(--chip-bg); 
+      border: 1px solid rgba(148, 163, 184, 0.4); 
+      color: var(--text-soft); 
+      margin-bottom: 4px; 
+    } 
+ 
+    .pill-dot { 
+      width: 6px; 
+      height: 6px; 
+      border-radius: 999px; 
+      background: var(--accent); 
+    } 
+ 
+    .meta-muted { 
+      opacity: 0.72; 
+    } 
+ 
+    .meta-highlight { 
+      color: var(--accent); 
+      font-weight: 500; 
+    } 
+ 
+    /* Right column (sidebar) */ 
+    .side-column { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 18px; 
+    } 
+ 
+    .contact-list { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: 8px; 
+      font-size: 12px; 
+    } 
+ 
+    .contact-item { 
+      padding: 7px 9px; 
+      border-radius: 14px; 
+      background: rgba(15, 23, 42, 0.92); 
+      border: 1px solid rgba(31, 41, 55, 0.9); 
+    } 
+ 
+    .contact-label { 
+      font-size: 11px; 
+      text-transform: uppercase; 
+      letter-spacing: 0.16em; 
+      color: var(--text-soft); 
+      margin-bottom: 2px; 
+    } 
+ 
+    .contact-value a { 
+      color: var(--text-main); 
+      text-decoration: none; 
+    } 
+ 
+    .contact-value a:hover { 
+      text-decoration: underline; 
+      color: var(--accent); 
+    } 
+ 
+    .chips { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 6px; 
+      margin-top: 4px; 
+    } 
+ 
+    .chip { 
+      font-size: 11px; 
+      padding: 5px 9px; 
+      border-radius: var(--radius-pill); 
+      background: rgba(15, 23, 42, 0.9); 
+      border: 1px solid rgba(51, 65, 85, 0.95); 
+      color: var(--text-soft); 
+      white-space: nowrap; 
+    } 
+ 
+    .chip-accent { 
+      border-color: rgba(56, 189, 248, 0.6); 
+      background: rgba(15, 23, 42, 0.95); 
+      color: var(--accent); 
+    } 
+ 
+    .edu-list { 
+      font-size: 12px; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 10px; 
+      margin-top: 4px; 
+    } 
+ 
+    .edu-item { 
+      padding: 7px 8px; 
+      border-radius: 14px; 
+      border: 1px solid rgba(31, 41, 55, 0.9); 
+      background: rgba(15, 23, 42, 0.92); 
+    } 
+ 
+    .edu-degree { 
+      font-weight: 500; 
+      margin-bottom: 2px; 
+    } 
+ 
+    .edu-meta { 
+      font-size: 11px; 
+      color: var(--text-soft); 
+    } 
+ 
+    .edu-tag { 
+      font-size: 11px; 
+      color: var(--accent); 
+      margin-top: 4px; 
+    } 
+ 
+    .skills-columns { 
+      display: grid; 
+      grid-template-columns: repeat(2, minmax(0, 1fr)); 
+      gap: 8px 10px; 
+      font-size: 12px; 
+      margin-top: 4px; 
+    } 
+ 
+    @media (max-width: 520px) { 
+      .skills-columns { 
+        grid-template-columns: 1fr; 
+      } 
+    } 
+ 
+    .skills-group-title { 
+      font-size: 11px; 
+      text-transform: uppercase; 
+      letter-spacing: 0.16em; 
+      color: var(--text-soft); 
+      margin-bottom: 5px; 
+    } 
+ 
+    .skills-items { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 3px; 
+      color: var(--text-soft); 
+    } 
+ 
+    .divider { 
+      height: 1px; 
+      background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.5), transparent); 
+      margin: 8px 0; 
+      opacity: 0.6; 
+    } 
+ 
+    .tiny-note { 
+      margin-top: 10px; 
+      font-size: 11px; 
+      color: var(--text-soft); 
+      opacity: 0.8; 
+    } 
+  </style> 
+</head> 
+<body> 
+  <!-- Save this file as index.html and keep cv.pdf + profile.jpg in the same folder --> 
+  <main class="page"> 
+    <!-- MAIN COLUMN --> 
+    <section class="main-column"> 
+      <!-- HERO --> 
+      <header class="hero-card"> 
+        <div class="hero-badge"> 
+          <span class="hero-badge-dot"></span> 
+          <span>Open to opportunities</span> 
+        </div> 
+ 
+        <!-- Your profile photo --> 
+        <div class="avatar"> 
+          <img src="profile.jpg" alt="Portrait of Okum Udeh at work" /> 
+        </div> 
+ 
+        <div class="hero-text"> 
+          <div class="hero-role">System Administrator · IT Support · Logistics</div> 
+          <h1 class="hero-name">Okum Udeh</h1> 
+          <p class="hero-summary"> 
+            System Administrator and logistics specialist with experience in B2B e-commerce, 
+warehouse operations and 
+            IT support. Skilled in ERP systems, logistics tools and modern collaboration 
+platforms, with a background 
+            in Computer Science and ongoing development in Cybersecurity and German 
+language integration. 
+          </p> 
+ 
+          <div class="hero-actions"> 
+            <a href="mailto:okumudeh@gmail.com" class="btn-primary"> 
+              <span class="btn-icon">
+ ✉
+ </span> 
+              <span>Contact me</span> 
+            </a> 
+            <a href="#experience" class="btn-ghost"> 
+              <span class="btn-icon">
+ 📂
+ </span> 
+              <span>View experience</span> 
+            </a> 
+            <a href="cv.pdf" class="btn-ghost" download> 
+              <span class="btn-icon">
+ ⬇
+ </span> 
+              <span>Download CV (PDF)</span> 
+            </a> 
+          </div> 
+        </div> 
+      </header> 
+ 
+      <!-- EXPERIENCE --> 
+      <section id="experience" class="section"> 
+        <div class="section-header"> 
+          <h2 class="section-title">Professional Experience</h2> 
+          <div class="section-tagline">Logistics · E-Commerce · IT Systems</div> 
+        </div> 
+ 
+        <div class="timeline"> 
+          <!-- Mytheresa --> 
+          <article class="timeline-item"> 
+            <div class="timeline-main"> 
+              <h3 class="timeline-role">Logistics Specialist</h3> 
+              <div class="timeline-company">Mytheresa – Leipzig &amp; Munich, Germany</div> 
+              <div class="timeline-meta">May 2023 – May 2025 · E-commerce retailer</div> 
+              <ul class="timeline-bullets"> 
+                <li>Oversaw daily warehouse operations, including picking, packing, labelling and 
+shipping for international customers.</li> 
+                <li>Coordinated logistics processes to ensure on-time deliveries and accurate 
+inventory management.</li> 
+                <li>Collaborated with carriers and external partners to optimise outbound 
+shipments and reduce lead times.</li> 
+                <li>Monitored warehouse KPIs, improved warehouse processes and supported 
+ERP-based inventory updates.</li> 
+              </ul> 
+            </div> 
+            <div class="timeline-side"> 
+              <div> 
+                <div class="pill"> 
+                  <span class="pill-dot"></span> 
+                  <span>ERP · Warehouse KPIs</span> 
+                </div> 
+                <div class="meta-muted">Logistics &amp; inventory management</div> 
+              </div> 
+              <div class="meta-highlight">2 years</div> 
+            </div> 
+          </article> 
+ 
+          <!-- Amazon --> 
+          <article class="timeline-item"> 
+            <div class="timeline-main"> 
+              <h3 class="timeline-role">Logistics Specialist</h3> 
+              <div class="timeline-company">Amazon – Gera, Germany</div> 
+              <div class="timeline-meta">Sep 2022 – May 2023 · Fulfilment &amp; logistics</div> 
+              <ul class="timeline-bullets"> 
+                <li>Handled large-scale order fulfilment with efficient packaging, shipment tracking 
+and returns handling.</li> 
+                <li>Ensured compliance with Amazon operational standards and strict last-mile 
+delivery timelines.</li> 
+                <li>Used warehouse management systems (WMS) and ERP tools for real-time 
+stock and shipment updates.</li> 
+              </ul> 
+            </div> 
+            <div class="timeline-side"> 
+              <div> 
+                <div class="pill"> 
+                  <span class="pill-dot"></span> 
+                  <span>WMS · ERP · FBA tools</span> 
+                </div> 
+                <div class="meta-muted">High-volume e-commerce</div> 
+              </div> 
+              <div class="meta-highlight">7 months</div> 
+            </div> 
+          </article> 
+ 
+          <!-- Tech Lab Marketers --> 
+          <article class="timeline-item"> 
+            <div class="timeline-main"> 
+              <h3 class="timeline-role">System Administrator &amp; Marketplace Facilitator</h3> 
+              <div class="timeline-company">Tech Lab Marketers – Toronto, Canada 
+(remote)</div> 
+              <div class="timeline-meta">Jan 2022 – Oct 2022 · B2B &amp; e-commerce 
+systems</div> 
+              <ul class="timeline-bullets"> 
+                <li>Analysed and optimised B2B e-commerce workflows for product listings, order 
+processing and logistics coordination.</li> 
+                <li>Created and managed Jira/Confluence tickets for system incidents and 
+process improvements.</li> 
+                <li>Worked cross-functionally via Microsoft Teams to troubleshoot ERP-related 
+bottlenecks.</li> 
+                <li>Supported ERP integrations for better product tracking, invoicing and B2B 
+order management.</li> 
+                <li>Maintained and configured systems, networks and servers; installed and 
+updated hardware/software; delivered desktop &amp; helpdesk support.</li> 
+              </ul> 
+            </div> 
+            <div class="timeline-side"> 
+              <div> 
+                <div class="pill"> 
+                  <span class="pill-dot"></span> 
+                  <span>Jira · Confluence · ERP</span> 
+                </div> 
+                <div class="meta-muted">Remote · International</div> 
+              </div> 
+              <div class="meta-highlight">~1 year</div> 
+            </div> 
+          </article> 
+ 
+          <!-- Internship --> 
+          <article class="timeline-item"> 
+            <div class="timeline-main"> 
+              <h3 class="timeline-role">IT Support / Customer Service (Internship)</h3> 
+              <div class="timeline-company">Federal Medical Centre (SERVICOM) – Yenegoa, 
+Nigeria</div> 
+              <div class="timeline-meta">Nov 2011 – Nov 2012</div> 
+              <ul class="timeline-bullets"> 
+                <li>Provided IT support and customer service in a healthcare environment.</li> 
+                <li>Assisted with troubleshooting, basic maintenance and user support for 
+systems and devices.</li> 
+              </ul> 
+            </div> 
+            <div class="timeline-side"> 
+              <div> 
+                <div class="pill"> 
+                  <span class="pill-dot"></span> 
+                  <span>IT support</span> 
+                </div> 
+                <div class="meta-muted">Early career experience</div> 
+              </div> 
+              <div class="meta-highlight">1 year</div> 
+            </div> 
+          </article> 
+        </div> 
+      </section> 
+    </section> 
+ 
+    <!-- SIDE COLUMN --> 
+    <aside class="side-column"> 
+      <!-- CONTACT --> 
+      <section class="section"> 
+        <div class="section-header"> 
+          <h2 class="section-title">Contact</h2> 
+          <div class="section-tagline">Based in Berlin, Germany</div> 
+        </div> 
+        <div class="contact-list"> 
+          <div class="contact-item"> 
+            <div class="contact-label">Email</div> 
+            <div class="contact-value"> 
+              <a href="mailto:okumudeh@gmail.com">okumudeh@gmail.com</a> 
+            </div> 
+          </div> 
+          <div class="contact-item"> 
+            <div class="contact-label">Phone</div> 
+            <div class="contact-value"> 
+              <a href="tel:+491796981752">+49 179 6981752</a> 
+            </div> 
+          </div> 
+          <div class="contact-item"> 
+            <div class="contact-label">Location</div> 
+            <div class="contact-value"> 
+              Klingsorstrasse 69, 12167 Berlin, Germany 
+            </div> 
+          </div> 
+          <div class="contact-item"> 
+            <div class="contact-label">Personal details</div> 
+            <div class="contact-value"> 
+              Born 12 May 1987 · Nigerian nationality 
+            </div> 
+          </div> 
+        </div> 
+      </section> 
+ 
+      <!-- SKILLS --> 
+      <section class="section"> 
+        <div class="section-header"> 
+          <h2 class="section-title">Skills &amp; Tools</h2> 
+          <div class="section-tagline">Systems · Data · Logistics</div> 
+        </div> 
+        <div class="skills-columns"> 
+          <div> 
+            <div class="skills-group-title">Technical &amp; Systems</div> 
+            <div class="skills-items"> 
+              <span>ERP systems: UPS, FCI, Worldship, Prologis</span> 
+              <span>Warehouse &amp; logistics tools; tracking systems (DHL, FedEx, UPS, 
+Amazon FBA)</span> 
+              <span>Hardware &amp; software maintenance (Windows, macOS, 
+printers)</span> 
+              <span>Microsoft Office (Excel, Word, PowerPoint, Outlook)</span> 
+              <span>Data &amp; reporting: Excel (advanced formulas, pivot tables), basic Power 
+BI</span> 
+              <span>Forklift operation</span> 
+            </div> 
+          </div> 
+          <div> 
+            <div class="skills-group-title">Collaboration &amp; Soft skills</div> 
+            <div class="skills-items"> 
+              <span>Microsoft Teams, Jira, Confluence</span> 
+              <span>Customer support &amp; service mindset</span> 
+              <span>Clear communication</span> 
+              <span>Problem-solving and troubleshooting</span> 
+              <span>Leadership &amp; teamwork</span> 
+              <span>Adaptability, flexibility &amp; negotiation</span> 
+            </div> 
+          </div> 
+        </div> 
+        <div class="divider"></div> 
+        <div class="chips"> 
+          <span class="chip chip-accent">System Administration</span> 
+          <span class="chip">IT Support</span> 
+          <span class="chip">B2B E-Commerce</span> 
+          <span class="chip">Logistics &amp; Fulfilment</span> 
+          <span class="chip">ERP &amp; WMS</span> 
+        </div> 
+      </section> 
+ 
+      <!-- EDUCATION --> 
+      <section class="section"> 
+        <div class="section-header"> 
+          <h2 class="section-title">Education</h2> 
+          <div class="section-tagline">Academic &amp; language</div> 
+        </div> 
+        <div class="edu-list"> 
+          <div class="edu-item"> 
+            <div class="edu-degree">Bachelor of Science – Computer Science</div> 
+            <div class="edu-meta">Madonna University, Elele, Nigeria · 2011</div> 
+          </div> 
+          <div class="edu-item"> 
+            <div class="edu-degree">Bachelor in Cybersecurity (pending)</div> 
+            <div class="edu-meta">State University of Telecommunications, Kyiv, Ukraine · 
+2021</div> 
+            <div class="edu-tag">Further studies in cybersecurity</div> 
+          </div> 
+          <div class="edu-item"> 
+            <div class="edu-degree">German Courses A1–B1</div> 
+            <div class="edu-meta">Technical University Dresden · 2022</div> 
+            <div class="edu-tag">TUDIAS · B1 German course (Mar 2022 – Aug 2022)</div> 
+          </div> 
+          <div class="edu-item"> 
+            <div class="edu-degree">Abitur</div> 
+            <div class="edu-meta">St. Paul's Comprehensive School, Ikot Ekpene · 2004</div> 
+          </div> 
+        </div> 
+        <div class="divider"></div> 
+        <div class="edu-list"> 
+          <div class="edu-item"> 
+            <div class="edu-degree">BAMF Integration Course / Leben in Deutschland</div> 
+            <div class="edu-meta">Pscherer Academy · Jul 2025</div> 
+          </div> 
+        </div> 
+      </section> 
+ 
+      <!-- LANGUAGES & HOBBIES --> 
+      <section class="section"> 
+        <div class="section-header"> 
+          <h2 class="section-title">Languages &amp; Interests</h2> 
+          <div class="section-tagline">Personality</div> 
+        </div> 
+        <div class="chips"> 
+          <span class="chip chip-accent">English</span> 
+          <span class="chip">German (B1)</span> 
+        </div> 
+        <div class="divider"></div> 
+        <div class="chips"> 
+          <span class="chip">Chess</span> 
+          <span class="chip">Reading</span> 
+          <span class="chip">Problem-solving</span> 
+          <span class="chip">Photography</span> 
+        </div> 
+        <p class="tiny-note"> 
+          References available on request. 
+        </p> 
+      </section> 
+    </aside> 
+  </main> 
+</body> 
+</html>
